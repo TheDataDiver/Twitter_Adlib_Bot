@@ -4,6 +4,7 @@ import tweepy
 import time
 import os
 import random
+from PIL import Image, ImageDraw, ImageFont
 
 # LOGIN CREDENTIALS FOR TWITTER
 CONSUMER_KEY = '91yh0WCkI8fkyLnFEjcixCI8I'
@@ -27,3 +28,29 @@ def wordselection(filename):
         selectedword = filelist[rnumber]
         f.close()
         return selectedword
+
+# FUNCTION FOR PRINTING OF AD-LIB
+def adlib():
+    print("%s the %s" % (verb, noun))
+
+# RANDOM WORD SELECTION AND PRINTING OF HOROSCOPE FOR EACH SIGN
+noun = wordselection('concrete_nouns.txt')
+noun2 = wordselection('concrete_nouns.txt')
+verb = wordselection('verbs.txt')
+adjective = wordselection('adjectives.txt')
+adverb = wordselection('adverbs.txt')
+adlib()
+
+# CHECKING IF EDITED WALLPAPER DIRECTORY ALREADY EXISTS, IF NOT CREATE THE DIRECTORY
+if not os.path.exists('/Users/johnjameshutchinson/icloud/GitHub/Twitter/Blessed_Adlibs/edited_wallpaper'):
+    os.makedirs('/Users/johnjameshutchinson/icloud/GitHub/Twitter/Blessed_Adlibs/edited_wallpaper')
+
+# COUTING HOW MANY JPG FILES ARE PRESENT IN THE STOCK WALLPAPER FOLDER
+os.chdir('/Users/johnjameshutchinson/icloud/GitHub/Twitter/Blessed_Adlibs/stock_wallpaper')
+i = 0
+x = []
+for file in os.listdir():
+    if file.endswith('.jpg'):
+#        x.append(file)
+        i += 1
+print(i)
